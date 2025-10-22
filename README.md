@@ -20,12 +20,6 @@ A Halloween-themed Forge mod for Pixelmon servers that adds candy drops when def
 - **Pixelmon Reforged**: 9.1.11+
 - **Server Type**: Works on Forge or Arclight (Forge+Bukkit hybrid)
 
-## 🚀 Installation
-
-1. Download the latest `TrickOrTreatPixelmon-X.X.X-pixelmon.jar` from [Releases](../../releases)
-2. Place the JAR file in your server's `/mods/` folder
-3. Restart your server
-4. Configure settings in `trickortreat-pixelmon-config.json`
 
 ## ⚙️ Configuration
 
