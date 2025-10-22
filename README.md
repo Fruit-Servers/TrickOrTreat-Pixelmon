@@ -58,13 +58,13 @@ The mod creates a `trickortreat-pixelmon-config.json` file with the following se
 
 The mod includes 7 different rare treats:
 
-- **Token** - Server currency token
-- **Collectable Pass** - Special access pass
-- **Fruitsters Key** - Custom key item
-- **SpooKey** - Halloween-themed key
-- **Block of Netherite** - Valuable building block
-- **Witch Spawner** - Mob spawner
-- **Spider Spawner** - Mob spawner
+- **Token** 
+- **Collectable Pass** 
+- **Fruitsters Key** 
+- **SpooKey** 
+- **Block of Netherite** 
+- **Witch Spawner** 
+- **Spider Spawner** 
 
 ## 🔧 Admin Commands
 
@@ -109,12 +109,6 @@ cmd.executeCandyDropLogic("PlayerName", false);
 cmd.forceGiveRareCandy("PlayerName");
 ```
 
-## 🏗️ Building from Source
-
-1. Clone the repository
-2. Run `mvn clean package`
-3. Find the JAR in `target/TrickOrTreatPixelmon-X.X.X-pixelmon.jar`
-
 ## 📝 Version History
 
 - **v1.2.0-pixelmon** - Initial Pixelmon mod release
@@ -122,14 +116,6 @@ cmd.forceGiveRareCandy("PlayerName");
   - Added Pixelmon event integration
   - Implemented JSON configuration system
   - Added admin command suite
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
 
 ## 📄 License
 
