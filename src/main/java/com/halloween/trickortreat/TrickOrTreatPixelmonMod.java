@@ -7,7 +7,10 @@ import com.halloween.trickortreat.items.CandyManager;
 import com.halloween.trickortreat.listeners.PixelmonEventListener;
 import com.halloween.trickortreat.managers.CooldownManager;
 import com.halloween.trickortreat.rewards.RareTreatManager;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.UUID;
 
@@ -27,10 +30,12 @@ public class TrickOrTreatPixelmonMod {
     
     public TrickOrTreatPixelmonMod() {
         instance = this;
-        initialize();
+        
+        // Register for setup event
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
     
-    private void initialize() {
+    private void setup(final FMLCommonSetupEvent event) {
         System.out.println("🎃 Halloween Trick or Treat Pixelmon mod v" + VERSION + " is starting!");
         
         // Initialize configuration first
@@ -45,6 +50,9 @@ public class TrickOrTreatPixelmonMod {
         // Initialize Pixelmon event listener
         this.pixelmonEventListener = new PixelmonEventListener(this);
         
+        // Register event listener with Forge event bus
+        MinecraftForge.EVENT_BUS.register(this.pixelmonEventListener);
+        
         // Initialize rare treat system
         this.rareTreatManager = new RareTreatManager(this);
         
@@ -54,12 +62,12 @@ public class TrickOrTreatPixelmonMod {
         System.out.println("🎃 Configuration loaded successfully!");
         System.out.println("🎃 Candy system initialized!");
         System.out.println("🎃 Cooldown system initialized!");
-        System.out.println("🎃 Pixelmon event listener initialized!");
+        System.out.println("🎃 Pixelmon event listener registered!");
         System.out.println("🎃 Rare treat system initialized!");
         System.out.println("🎃 Commands registered!");
         System.out.println("🎃 This mod adds Halloween candy drops when defeating/catching Pixelmon!");
         System.out.println("🎃 Features: Rare treats, cooldowns, custom items, and more!");
-        System.out.println("🎃 Ready for integration with Pixelmon Reforged 9.1.11+");
+        System.out.println("🎃 Ready for integration with Pixelmon Reforged 9.1.13+");
     }
     
     public static TrickOrTreatPixelmonMod getInstance() {

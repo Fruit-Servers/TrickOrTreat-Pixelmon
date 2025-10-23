@@ -62,7 +62,7 @@ public class CandyManager {
         // Set lore
         ListNBT lore = new ListNBT();
         lore.add(StringNBT.valueOf("{\"text\":\"A mystical Halloween treat!\",\"color\":\"gray\"}"));
-        lore.add(StringNBT.valueOf("{\"text\":\"Contains powerful skyblock magic...\",\"color\":\"dark_purple\"}"));
+        lore.add(StringNBT.valueOf("{\"text\":\"Contains powerful rare magic...\",\"color\":\"dark_purple\"}"));
         lore.add(StringNBT.valueOf("{\"text\":\"Right-click to activate rare rewards!\",\"color\":\"yellow\"}"));
         lore.add(StringNBT.valueOf("{\"text\":\"\",\"color\":\"white\"}"));
         lore.add(StringNBT.valueOf("{\"text\":\"§7Rare chance: §d1%\",\"color\":\"gray\"}"));

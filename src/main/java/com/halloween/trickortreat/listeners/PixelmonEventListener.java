@@ -4,7 +4,12 @@ import com.halloween.trickortreat.TrickOrTreatPixelmonMod;
 import com.pixelmonmod.pixelmon.api.events.BeatWildPixelmonEvent;
 import com.pixelmonmod.pixelmon.api.events.CaptureEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
+import com.pixelmonmod.pixelmon.battles.controller.participants.WildPixelmonParticipant;
+import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Util;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Random;
@@ -25,11 +30,11 @@ public class PixelmonEventListener {
     public void onPixelmonBeat(BeatWildPixelmonEvent event) {
         if (event.player == null) return;
         
-        System.out.println("🥊 Pixelmon defeated by player!");
+        System.out.println("🥊 Pixelmon defeated by player: " + event.player.getName().getString());
         
-        // In real implementation, this would be ServerPlayerEntity
-        Object player = event.player;
-        Pokemon pokemon = event.wpp.asWrapper().pokemon;
+        ServerPlayerEntity player = event.player;
+        WildPixelmonParticipant wildParticipant = event.wpp;
+        Pokemon pokemon = wildParticipant.pokemon;
         
         processCandyDrop(player, pokemon, "defeat");
     }
@@ -38,15 +43,16 @@ public class PixelmonEventListener {
     public void onPixelmonCapture(CaptureEvent.SuccessfulCapture event) {
         if (event.getPlayer() == null) return;
         
-        System.out.println("🎯 Pixelmon captured by player!");
+        System.out.println("🎯 Pixelmon captured by player: " + event.getPlayer().getName().getString());
         
-        Object player = event.getPlayer();
-        Pokemon pokemon = event.getPokemon().getPokemon();
+        ServerPlayerEntity player = event.getPlayer();
+        PixelmonEntity pixelmonEntity = event.getPokemon();
+        Pokemon pokemon = pixelmonEntity.getPokemon();
         
         processCandyDrop(player, pokemon, "capture");
     }
     
-    private void processCandyDrop(Object player, Pokemon pokemon, String method) {
+    private void processCandyDrop(ServerPlayerEntity player, Pokemon pokemon, String method) {
         if (!mod.getConfigManager().isCandyDropEnabled()) {
             System.out.println("❌ Candy drops are disabled in config");
             return;
@@ -57,8 +63,8 @@ public class PixelmonEventListener {
             return;
         }
         
-        // Generate player UUID for testing (in real implementation, get from player object)
-        UUID playerId = UUID.randomUUID();
+        // Get player UUID from the actual player
+        UUID playerId = player.getUUID();
         
         double dropChance = mod.getConfigManager().getCandyDropChance();
         double roll = random.nextDouble() * 100.0;
@@ -122,10 +128,15 @@ public class PixelmonEventListener {
         return mod.getConfigManager().canDropFromWild();
     }
     
-    private void giveItemToPlayer(Object player, ItemStack item) {
-        // In real implementation, this would add to player inventory or drop at location
-        System.out.println("📦 Giving item to player: " + item.getClass().getSimpleName());
-        // player.inventory.add(item) or player.drop(item, false)
+    private void giveItemToPlayer(ServerPlayerEntity player, ItemStack item) {
+        // Try to add to player inventory, if full drop at player location
+        boolean added = player.inventory.add(item);
+        if (!added) {
+            // Drop the item at player's location if inventory is full
+            player.drop(item, false);
+            player.sendMessage(new StringTextComponent("§6Your inventory is full! Candy dropped at your feet."), Util.NIL_UUID);
+        }
+        System.out.println("📦 Gave item to player: " + player.getName().getString());
     }
     
 //    /**

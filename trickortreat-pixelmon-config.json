@@ -1,0 +1,41 @@
+{
+  "candy-drop": {
+    "enabled": true,
+    "drop-chance": 15.0,
+    "drop-from-wild": true,
+    "drop-from-legendary": true,
+    "drop-from-mythical": true,
+    "drop-from-ultra-beast": true
+  },
+  "rare-treats": {
+    "treat-chance": 50.0,
+    "individual-chances": {
+      "event-medal": 10,
+      "token": 5,
+      "trading-card": 10,
+      "ancient-debris": 10,
+      "money": 15,
+      "vote-shard": 5,
+      "end-voucher": 10,
+      "nether-voucher": 10,
+      "deep-dark-voucher": 5,
+      "geode-fortune": 10,
+      "god-voucher": 10
+    }
+  },
+  "cooldowns": {
+    "rare-candy-hours": 1,
+    "candy-use-seconds": 3
+  },
+  "messages": {
+    "prefix": "\u00266[\u0026c🎃\u00266] \u0026r",
+    "candy-received": "\u0026aYou found Halloween Candy! Right-click to use it!",
+    "rare-candy-received": "\u0026d\u0026lRARE! \u0026r\u0026bYou found Rare Halloween Candy! Right-click to use it!",
+    "treat-received": "\u0026a\u0026lTREAT! \u0026r\u0026a{treat}",
+    "trick-received": "\u0026c\u0026lTRICK! \u0026r\u0026c{trick}",
+    "rare-treat-received": "\u0026d\u0026lRARE TREAT! \u0026r\u0026d{treat}",
+    "rare-trick-received": "\u00265\u0026lRARE TRICK! \u0026r\u00265{trick}",
+    "cooldown-active": "\u0026c⏰ You must wait {time} before receiving another rare candy!",
+    "candy-use-cooldown": "\u0026c⏰ You must wait {time} seconds before using another candy!"
+  }
+}
