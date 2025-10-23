@@ -4,31 +4,33 @@ license="MIT"
 
 [[mods]]
 modId="trickortreatpixelmon"
-version="1.2.0-pixelmon"
-displayName="Halloween Trick or Treat Pixelmon"
+version="0.0.1"
+displayName="Mod name"
+displayURL="https://github.com/EnvyWare" # URL HERE
+credits="https://github.com/EnvyWare" # Your name here
+authors="https://github.com/EnvyWare" # Your name here
 description='''
-Halloween-themed trick or treat mod for Pixelmon servers with custom skyblock rewards.
+Description of the mod here
 '''
-authors="Halloween Team"
-credits="Pixelmon Reforged Team"
 
 [[dependencies.trickortreatpixelmon]]
-modId="forge"
-mandatory=true
-versionRange="[36,)"
-ordering="NONE"
-side="BOTH"
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
 
 [[dependencies.trickortreatpixelmon]]
-modId="minecraft"
-mandatory=true
-versionRange="[1.16.5]"
-ordering="NONE"
-side="BOTH"
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
+
 
 [[dependencies.trickortreatpixelmon]]
-modId="pixelmon"
-mandatory=true
-versionRange="[9.1.11]"
-ordering="NONE"
-side="BOTH"
+    modId="pixelmon"
+    mandatory=true
+    versionRange="[9.1.2,)"
+    ordering="NONE"
+    side="BOTH"

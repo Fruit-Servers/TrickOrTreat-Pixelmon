@@ -3,6 +3,7 @@ package com.halloween.trickortreat.listeners;
 import com.halloween.trickortreat.TrickOrTreatPixelmonMod;
 import com.pixelmonmod.pixelmon.api.events.BeatWildPixelmonEvent;
 import com.pixelmonmod.pixelmon.api.events.CaptureEvent;
+import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -28,7 +29,7 @@ public class PixelmonEventListener {
         
         // In real implementation, this would be ServerPlayerEntity
         Object player = event.player;
-        BeatWildPixelmonEvent.Pokemon pokemon = event.wPokemon.pokemon;
+        Pokemon pokemon = event.wpp.asWrapper().pokemon;
         
         processCandyDrop(player, pokemon, "defeat");
     }
@@ -40,12 +41,12 @@ public class PixelmonEventListener {
         System.out.println("🎯 Pixelmon captured by player!");
         
         Object player = event.getPlayer();
-        BeatWildPixelmonEvent.Pokemon pokemon = event.getPokemon().pokemon;
+        Pokemon pokemon = event.getPokemon().getPokemon();
         
         processCandyDrop(player, pokemon, "capture");
     }
     
-    private void processCandyDrop(Object player, BeatWildPixelmonEvent.Pokemon pokemon, String method) {
+    private void processCandyDrop(Object player, Pokemon pokemon, String method) {
         if (!mod.getConfigManager().isCandyDropEnabled()) {
             System.out.println("❌ Candy drops are disabled in config");
             return;
@@ -98,7 +99,7 @@ public class PixelmonEventListener {
         }
     }
     
-    private boolean shouldDropCandy(BeatWildPixelmonEvent.Pokemon pokemon) {
+    private boolean shouldDropCandy(Pokemon pokemon) {
         // Don't drop from player-owned Pokemon
         if (pokemon.getOwnerPlayerUUID() != null) {
             return false;
@@ -127,25 +128,25 @@ public class PixelmonEventListener {
         // player.inventory.add(item) or player.drop(item, false)
     }
     
-    /**
-     * Simulates a Pixelmon defeat for testing
-     */
-    public void simulatePixelmonDefeat(boolean isLegendary, boolean isMythical, boolean isUltraBeast) {
-        BeatWildPixelmonEvent.Pokemon pokemon = new BeatWildPixelmonEvent.Pokemon(isLegendary, isMythical, isUltraBeast);
-        BeatWildPixelmonEvent.WildPixelmon wildPixelmon = new BeatWildPixelmonEvent.WildPixelmon(pokemon);
-        BeatWildPixelmonEvent event = new BeatWildPixelmonEvent("TestPlayer", wildPixelmon);
-        
-        onPixelmonBeat(event);
-    }
-    
-    /**
-     * Simulates a Pixelmon capture for testing
-     */
-    public void simulatePixelmonCapture(boolean isLegendary, boolean isMythical, boolean isUltraBeast) {
-        BeatWildPixelmonEvent.Pokemon pokemon = new BeatWildPixelmonEvent.Pokemon(isLegendary, isMythical, isUltraBeast);
-        CaptureEvent.PokemonWrapper wrapper = new CaptureEvent.PokemonWrapper(pokemon);
-        CaptureEvent.SuccessfulCapture event = new CaptureEvent.SuccessfulCapture("TestPlayer", wrapper);
-        
-        onPixelmonCapture(event);
-    }
+//    /**
+//     * Simulates a Pixelmon defeat for testing
+//     */
+//    public void simulatePixelmonDefeat(boolean isLegendary, boolean isMythical, boolean isUltraBeast) {
+//        Pokemon pokemon = new BeatWildPixelmonEvent.Pokemon(isLegendary, isMythical, isUltraBeast);
+//        Pokemon wildPixelmon = new BeatWildPixelmonEvent.WildPixelmon(pokemon);
+//        BeatWildPixelmonEvent event = new BeatWildPixelmonEvent("TestPlayer", wildPixelmon);
+//
+//        onPixelmonBeat(event);
+//    }
+//
+//    /**
+//     * Simulates a Pixelmon capture for testing
+//     */
+//    public void simulatePixelmonCapture(boolean isLegendary, boolean isMythical, boolean isUltraBeast) {
+//        BeatWildPixelmonEvent.Pokemon pokemon = new BeatWildPixelmonEvent.Pokemon(isLegendary, isMythical, isUltraBeast);
+//        CaptureEvent.PokemonWrapper wrapper = new CaptureEvent.PokemonWrapper(pokemon);
+//        CaptureEvent.SuccessfulCapture event = new CaptureEvent.SuccessfulCapture("TestPlayer", wrapper);
+//
+//        onPixelmonCapture(event);
+//    }
 }

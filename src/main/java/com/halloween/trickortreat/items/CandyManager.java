@@ -3,6 +3,7 @@ package com.halloween.trickortreat.items;
 import com.halloween.trickortreat.TrickOrTreatPixelmonMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.StringNBT;
@@ -22,7 +23,7 @@ public class CandyManager {
      * Creates a regular Halloween candy item
      */
     public ItemStack createRegularCandy() {
-        ItemStack candy = new ItemStack(Item.SUGAR);
+        ItemStack candy = new ItemStack(Items.SUGAR);
         
         CompoundNBT nbt = candy.getOrCreateTag();
         nbt.putString(CANDY_NBT_KEY, CANDY_TYPE_REGULAR);
@@ -49,7 +50,7 @@ public class CandyManager {
      * Creates a rare Halloween candy item
      */
     public ItemStack createRareCandy() {
-        ItemStack rareCandy = new ItemStack(Item.GOLDEN_APPLE);
+        ItemStack rareCandy = new ItemStack(Items.GOLDEN_APPLE);
         
         CompoundNBT nbt = rareCandy.getOrCreateTag();
         nbt.putString(CANDY_NBT_KEY, CANDY_TYPE_RARE);

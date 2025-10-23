@@ -3,6 +3,7 @@ package com.halloween.trickortreat.rewards;
 import com.halloween.trickortreat.TrickOrTreatPixelmonMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 import java.util.Map;
 import java.util.Random;
@@ -66,7 +67,7 @@ public class RareTreatManager {
         switch (treat) {
             case BLOCK_OF_NETHERITE:
                 // Hardcoded netherite block
-                ItemStack netherite = new ItemStack(Item.ANCIENT_DEBRIS); // Using ancient debris as substitute
+                ItemStack netherite = new ItemStack(Items.ANCIENT_DEBRIS); // Using ancient debris as substitute
                 giveItemToPlayer(player, netherite);
                 sendMessageToPlayer(player, "§8💎 " + treat.getDescription());
                 break;

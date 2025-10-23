@@ -93,55 +93,55 @@ public class TrickOrTreatPixelmonMod {
         return triggerCandyDropCommand;
     }
     
-    // Main entry point for testing
-    public static void main(String[] args) {
-        System.out.println("Testing TrickOrTreatPixelmonMod...");
-        TrickOrTreatPixelmonMod mod = new TrickOrTreatPixelmonMod();
-        
-        // Test candy creation
-        System.out.println("\n=== Testing Candy System ===");
-        mod.getCandyManager().createRegularCandy();
-        mod.getCandyManager().createRareCandy();
-        
-        // Test cooldown system
-        System.out.println("\n=== Testing Cooldown System ===");
-        UUID testPlayer = UUID.randomUUID();
-        System.out.println("Test player UUID: " + testPlayer);
-        
-        // Test rare candy cooldown
-        System.out.println("Is on rare candy cooldown: " + mod.getCooldownManager().isOnRareCandyCooldown(testPlayer));
-        mod.getCooldownManager().setRareCandyCooldown(testPlayer);
-        System.out.println("Is on rare candy cooldown after setting: " + mod.getCooldownManager().isOnRareCandyCooldown(testPlayer));
-        
-        long remaining = mod.getCooldownManager().getRareCandyCooldownRemaining(testPlayer);
-        System.out.println("Remaining time: " + mod.getCooldownManager().formatCooldownTime(remaining));
-        
-        System.out.println(mod.getCooldownManager().getCooldownStats());
-        
-        System.out.println("\nSimulating mythical Pixelmon defeat:");
-        mod.getPixelmonEventListener().simulatePixelmonDefeat(false, true, false);
-        
-        // Test rare treat system
-        System.out.println("\n=== Testing Rare Treats ===");
-        System.out.println(mod.getRareTreatManager().getTreatStats());
-        
-        System.out.println("Testing rare treat activation:");
-        mod.getRareTreatManager().activateRareTreat("TestPlayer");
-        
-        System.out.println("\nTesting forced treats:");
-        mod.getRareTreatManager().forceGiveTreat("TestPlayer", "netherite");
-        mod.getRareTreatManager().forceGiveTreat("TestPlayer", "token");
-        mod.getRareTreatManager().forceGiveTreat("TestPlayer", "spookey");
-        
-        // Test command system
-        System.out.println("\n=== Testing Commands ===");
-        System.out.println("Testing /triggercandydrop:");
-        mod.getTriggerCandyDropCommand().executeCandyDropLogic("TestPlayer", false);
-        
-        System.out.println("\nTesting forced candy drops:");
-        mod.getTriggerCandyDropCommand().forceGiveRareCandy("TestPlayer");
-        mod.getTriggerCandyDropCommand().forceGiveRegularCandy("TestPlayer");
-        
-        System.out.println("Mod initialized successfully!");
-    }
+//    // Main entry point for testing
+//    public static void main(String[] args) {
+//        System.out.println("Testing TrickOrTreatPixelmonMod...");
+//        TrickOrTreatPixelmonMod mod = new TrickOrTreatPixelmonMod();
+//
+//        // Test candy creation
+//        System.out.println("\n=== Testing Candy System ===");
+//        mod.getCandyManager().createRegularCandy();
+//        mod.getCandyManager().createRareCandy();
+//
+//        // Test cooldown system
+//        System.out.println("\n=== Testing Cooldown System ===");
+//        UUID testPlayer = UUID.randomUUID();
+//        System.out.println("Test player UUID: " + testPlayer);
+//
+//        // Test rare candy cooldown
+//        System.out.println("Is on rare candy cooldown: " + mod.getCooldownManager().isOnRareCandyCooldown(testPlayer));
+//        mod.getCooldownManager().setRareCandyCooldown(testPlayer);
+//        System.out.println("Is on rare candy cooldown after setting: " + mod.getCooldownManager().isOnRareCandyCooldown(testPlayer));
+//
+//        long remaining = mod.getCooldownManager().getRareCandyCooldownRemaining(testPlayer);
+//        System.out.println("Remaining time: " + mod.getCooldownManager().formatCooldownTime(remaining));
+//
+//        System.out.println(mod.getCooldownManager().getCooldownStats());
+//
+//        System.out.println("\nSimulating mythical Pixelmon defeat:");
+//        mod.getPixelmonEventListener().simulatePixelmonDefeat(false, true, false);
+//
+//        // Test rare treat system
+//        System.out.println("\n=== Testing Rare Treats ===");
+//        System.out.println(mod.getRareTreatManager().getTreatStats());
+//
+//        System.out.println("Testing rare treat activation:");
+//        mod.getRareTreatManager().activateRareTreat("TestPlayer");
+//
+//        System.out.println("\nTesting forced treats:");
+//        mod.getRareTreatManager().forceGiveTreat("TestPlayer", "netherite");
+//        mod.getRareTreatManager().forceGiveTreat("TestPlayer", "token");
+//        mod.getRareTreatManager().forceGiveTreat("TestPlayer", "spookey");
+//
+//        // Test command system
+//        System.out.println("\n=== Testing Commands ===");
+//        System.out.println("Testing /triggercandydrop:");
+//        mod.getTriggerCandyDropCommand().executeCandyDropLogic("TestPlayer", false);
+//
+//        System.out.println("\nTesting forced candy drops:");
+//        mod.getTriggerCandyDropCommand().forceGiveRareCandy("TestPlayer");
+//        mod.getTriggerCandyDropCommand().forceGiveRegularCandy("TestPlayer");
+//
+//        System.out.println("Mod initialized successfully!");
+//    }
 }
