@@ -28,10 +28,10 @@ buildNumber.properties
 ##############################
 bin/
 build/
-.gradle
+.gradle/
 .gradletasknamecache
 gradle-app.setting
-!gradle-wrapper.jar
+gradle-wrapper.jar
 
 ##############################
 ## IntelliJ
@@ -81,3 +81,7 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+
+build/
+run/
+release/
